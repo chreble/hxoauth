@@ -137,8 +137,8 @@ class Request
 		credentials.set( "oauth_consumer_key", _consumer.key ) ;
 		credentials.set( "oauth_token", _token.key ) ;
 		credentials.set( "oauth_signature_method", signatureToString(signature)  ) ;
-		credentials.set( "oauth_timestamp", '' + timestamp() ) ;
-		credentials.set( "oauth_nonce", generateNonce() ) ;
+		credentials.set( "oauth_timestamp", "1340982010" ) ;//'' + timestamp() ) ;
+		credentials.set( "oauth_nonce", "ripple" ) ;//generateNonce() ) ;
 		credentials.set( "oauth_version", "1.0" ) ;
 		
 	}
@@ -160,6 +160,7 @@ class Request
 				trace( key ) ;
 				var hash = new HMAC( new Sha1() ) ;
 				var bytes = hash.calcBin( key, text ) ;
+				trace( bytes.toHex() ) ;
 				var digest = Base64.encode( bytes.toString() ) ;
 				trace( digest ) ;
 				credentials.set( "oauth_signature", digest ) ;
